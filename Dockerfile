@@ -5,7 +5,7 @@ MAINTAINER Anton Wolkov <anton@kix.co.il>
 # added kubectl
 
 RUN apt-get -qq update && \
-  apt-get -qq -y install curl bzip2 gcc git locales build-essential bind9-host vim && \
+  apt-get -qq -y install curl bzip2 gcc git locales build-essential bind9-host vim sudo && \
   curl -sL https://storage.googleapis.com/kubernetes-release/release/v1.20.0/bin/linux/amd64/kubectl -o /bin/kubectl && \
   chmod +x /bin/kubectl && \
   curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
