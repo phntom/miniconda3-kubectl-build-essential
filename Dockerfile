@@ -21,13 +21,15 @@ RUN apt-get -qq update && \
   apt-get -qq -y autoremove && \
   apt-get autoclean && \
   rm -rf /var/lib/apt/lists/* /var/log/dpkg.log && \
-  conda clean --all --yes && \
-  addgroup --gid 2004 xbuild && \
+  conda clean --all --yes
+
+RUN addgroup --gid 2004 xbuild && \
   adduser --uid 2004 --gid 2004 xbuild --disabled-password && \
   usermod -aG sudo xbuild && \
-  groupadd docker && \
+  groupadd --gid 2005 docker && \
   usermod -aG docker xbuild && \
-  chmod 666 /var/run/docker.sock && \
+  touch /var/run/docker.sock && \
+  chown root:docker /var/run/docker.sock && \
   echo 'xbuild  ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/xbuild
 
 ENV PATH /opt/conda/bin:$PATH
