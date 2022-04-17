@@ -14,6 +14,8 @@ RUN apt-get -qq update && \
   mv -v /tmp/docker/* /usr/bin/ && \
   curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh && \
   bash /tmp/miniconda.sh -bfp /usr/local && \
+  curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash && \
+  /root/.pyenv/bin/pyenv install 3.7.13 && \
   rm -rfv /tmp/* && \
   conda install -y python=3 && \
   conda update conda && \
