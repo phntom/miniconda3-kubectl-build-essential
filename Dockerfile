@@ -9,13 +9,13 @@ RUN apt-get -qq update && \
   curl -sL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o /bin/kubectl && \
   chmod +x /bin/kubectl && \
   curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
-  curl -sL https://download.docker.com/linux/static/stable/x86_64/docker-20.10.14.tgz -o /tmp/docker-20.10.14.tgz && \
-  tar xzf /tmp/docker-20.10.14.tgz -C /tmp/ && \
+  curl -sL https://download.docker.com/linux/static/stable/x86_64/docker-23.0.2.tgz -o /tmp/docker-23.0.2.tgz && \
+  tar xzf /tmp/docker-23.0.2.tgz -C /tmp/ && \
   mv -v /tmp/docker/* /usr/bin/ && \
   curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh && \
   bash /tmp/miniconda.sh -bfp /usr/local && \
   curl -L https://github.com/pyenv/pyenv-installer/raw/master/bin/pyenv-installer | bash && \
-  /root/.pyenv/bin/pyenv install 3.7.13 && \
+  /root/.pyenv/bin/pyenv install 3.11.2 && \
   rm -rfv /tmp/* && \
   conda install -y python=3 && \
   conda update conda && \
